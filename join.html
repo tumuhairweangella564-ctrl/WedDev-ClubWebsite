@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join — Web Dev Club</title>
+<meta name="description" content="How to join the Web Dev Club. No experience needed, no fees.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NAVBAR — identical on all seven pages. Copy this block as-is;
+     main.js adds the active-page marker automatically. -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="index.html">Web Dev<span>.</span>Club</a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a class="btn btn--join" href="join.html">Join us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1>Join us</h1>
+      <p>No experience needed — just curiosity and a Wednesday evening.</p>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How to join</h2>
+        <p>Four steps, about ten minutes in total.</p>
+      </div>
+      <div class="grid grid--4">
+        <div class="card"><h3>1. Join the Discord</h3><p>That's where everything is announced.</p></div>
+        <div class="card"><h3>2. Fill in the form</h3><p>Name, year, and what you want to learn.</p></div>
+        <div class="card"><h3>3. Come to a session</h3><p>Wednesday, 5pm, Room B12.</p></div>
+        <div class="card"><h3>4. Pick a project</h3><p>Join a team whenever you're ready.</p></div>
+      </div>
+      <p style="margin-top:var(--s-3)"><a class="btn btn--ghost" href="#signup">Go to the form</a></p>
+    </div>
+  </section>
+
+
+  <section class="section" id="signup">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Sign up</h2>
+        <p>Takes about a minute. We only ask for what we actually use.</p>
+      </div>
+
+      <!-- Validated and confirmed in the browser by main.js. A static site
+           has no server to post to, so swap the action for a real form
+           endpoint (Google Form, Formspree) once the club has one. -->
+      <form class="form" data-join-form>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name" data-required>
+          <p class="field__error">We need a name to put on the list.</p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" data-required>
+          <p class="field__hint">Used for event reminders, nothing else.</p>
+          <p class="field__error">That doesn't look like an email address yet.</p>
+        </div>
+
+        <div class="field">
+          <label for="year">Year of study</label>
+          <select id="year" name="year" data-required>
+            <option value="">Choose one</option>
+            <option>First year</option>
+            <option>Second year</option>
+            <option>Third year</option>
+            <option>Fourth year or beyond</option>
+            <option>Not a student</option>
+          </select>
+          <p class="field__error">Pick a year so we know who's in the room.</p>
+        </div>
+
+        <div class="field">
+          <label for="level">How much have you coded before?</label>
+          <select id="level" name="level" data-required>
+            <option value="">Choose one</option>
+            <option>Never written any code</option>
+            <option>Tried a tutorial or two</option>
+            <option>Built something small</option>
+            <option>Comfortable, want to build bigger things</option>
+          </select>
+          <p class="field__hint">There's no wrong answer. It shapes which workshops we run.</p>
+          <p class="field__error">Pick whichever is closest.</p>
+        </div>
+
+        <div class="field">
+          <label for="interests">Anything you want to learn?</label>
+          <textarea id="interests" name="interests" placeholder="Optional"></textarea>
+        </div>
+
+        <button class="btn btn--join" type="submit">Sign me up</button>
+        <p class="form__status" data-form-status role="alert"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The honest details</h2>
+      </div>
+      <p>
+        Membership is free. Attendance is not tracked. You can join mid-semester,
+        skip weeks, and come back. You don't need your own laptop, and you don't
+        need to have written a line of code before.
+      </p>
+    </div>
+  </section>
+
+  <!-- TODO (Esta): remaining sections from your plan —
+       membership tiers (optional), testimonials, FAQ, contact.
+       Also: point the form at a real endpoint before launch. -->
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Still deciding?</h2>
+          <p>Come to one session first. Nobody will ask you to commit.</p>
+        </div>
+        <a class="btn btn--join" href="join.html">Join the club</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER — identical on all seven pages. -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <h4>Web Dev Club</h4>
+        <p style="color:#c6cbe8;font-size:var(--step--1)">
+          A student-run club for building things on the web, open to every
+          major and every skill level.
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li>hello@webdevclub.org</li>
+          <li>Room B12 · Wednesdays 5pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Web Dev Club</div>
+  </div>
+</footer>
+
+<script src="data/events.js"></script>
+<script src="data/projects.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

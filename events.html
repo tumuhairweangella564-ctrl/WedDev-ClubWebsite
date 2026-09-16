@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events — Web Dev Club</title>
+<meta name="description" content="Workshops, hackathons and socials run by the Web Dev Club.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NAVBAR — identical on all seven pages. Copy this block as-is;
+     main.js adds the active-page marker automatically. -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="index.html">Web Dev<span>.</span>Club</a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a class="btn btn--join" href="join.html">Join us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1>Events</h1>
+      <p>From weekly workshops to hackathons — here's what's happening.</p>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Coming up</h2>
+        <p>Everything below is open to members and to anyone curious.</p>
+      </div>
+      <!-- Rendered by main.js from data/events.js -->
+      <div data-events="upcoming"></div>
+    </div>
+  </section>
+
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>When we meet</h2>
+      </div>
+      <p>
+        Every Wednesday at 5pm in Room B12, Science Block, during term.
+        Sessions run about ninety minutes. Bring a laptop if you have one —
+        we have a few spares if you don't.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Already happened</h2>
+        <p>Missed one? Slides and recordings live on the <a href="resources.html">Resources page</a>.</p>
+      </div>
+      <div data-events="past"></div>
+    </div>
+  </section>
+
+  <!-- TODO (Esta): optional sections from the plan, if there's time —
+       category filter tabs, calendar embed, "suggest an event" form. -->
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Don't want to miss one?</h2>
+          <p>Event announcements go out in Discord first.</p>
+        </div>
+        <a class="btn btn--join" href="join.html">Join the club</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER — identical on all seven pages. -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <h4>Web Dev Club</h4>
+        <p style="color:#c6cbe8;font-size:var(--step--1)">
+          A student-run club for building things on the web, open to every
+          major and every skill level.
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li>hello@webdevclub.org</li>
+          <li>Room B12 .Wednesdays 5pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Web Dev Club</div>
+  </div>
+</footer>
+
+<script src="data/events.js"></script>
+<script src="data/projects.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Web Dev Club</title>
+<meta name="description" content="Recaps, tutorials and member spotlights from the Web Dev Club.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NAVBAR — identical on all seven pages. Copy this block as-is;
+     main.js adds the active-page marker automatically. -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="index.html">Web Dev<span>.</span>Club</a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a class="btn btn--join" href="join.html">Join us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1>Updates</h1>
+      <p>Recaps, tutorials, and what members are working on.</p>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Latest posts</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="card">
+          <h3>What we covered at the deployment workshop</h3>
+          <p>Event recap · 3 min read · Replace with a real post.</p>
+        </article>
+        <!-- Copy this card for each post, or move posts into a data file
+             like data/events.js if you'd rather not edit HTML each time. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TODO (Esta): category filter, featured post banner,
+       individual post template page, author bios, newsletter signup. -->
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Want to write one?</h2>
+          <p>Members can pitch a post in the Discord any time.</p>
+        </div>
+        <a class="btn btn--join" href="join.html">Join the club</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER — identical on all seven pages. -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <h4>Web Dev Club</h4>
+        <p style="color:#c6cbe8;font-size:var(--step--1)">
+          A student-run club for building things on the web, open to every
+          major and every skill level.
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li>hello@webdevclub.org</li>
+          <li>Room B12 · Wednesdays 5pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Web Dev Club</div>
+  </div>
+</footer>
+
+<script src="data/events.js"></script>
+<script src="data/projects.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

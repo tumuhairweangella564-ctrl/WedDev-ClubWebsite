@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Dev Club — build, ship, learn together</title>
+<meta name="description" content="A student-run club where members learn web development by building real projects, running workshops, and shipping work they can show.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<!-- Marks the page as scripted before first paint, so the hero reveal
+     never flashes and a no-JS visitor sees everything immediately. -->
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NAVBAR — identical on all seven pages. Copy this block as-is;
+     main.js adds the active-page marker automatically. -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="index.html">Web Dev<span>.</span>Club</a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a class="btn btn--join" href="join.html">Join us</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO — source on the left, rendered result on the right. The club's
+       own subject matter used as the visual. This is the one loud moment
+       on the site; everything below it stays deliberately quiet. -->
+  <section class="hero wrap">
+    <div class="hero__grid">
+      <div class="reveal">
+        <h1>We build the web, on purpose.</h1>
+        <p class="hero__lede">
+          A student club where you learn web development by shipping real things —
+          workshops on Wednesdays, projects all semester, no experience assumed.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--join" href="join.html">Join the club</a>
+          <a class="btn btn--ghost" href="projects.html">See what we build</a>
+        </div>
+      </div>
+
+      <div class="code-pane reveal" aria-hidden="true">
+        <div class="code-pane__bar">
+          <span class="code-pane__dot"></span>
+          <span class="code-pane__dot"></span>
+          <span class="code-pane__dot"></span>
+          <span>index.html</span>
+        </div>
+<pre><span class="t">&lt;main</span> <span class="a">class</span>=<span class="s">"club"</span><span class="t">&gt;</span>
+  <span class="t">&lt;h1&gt;</span>Week one: you write CSS<span class="t">&lt;/h1&gt;</span>
+  <span class="t">&lt;h1&gt;</span>Week six: you ship a site<span class="t">&lt;/h1&gt;</span>
+  <span class="t">&lt;h1&gt;</span><span class="type-line">Week twelve: you teach it</span><span class="t">&lt;/h1&gt;</span>
+<span class="t">&lt;/main&gt;</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK STATS — replace these four numbers with the club's real ones
+       before submitting. -->
+  <section class="section section--tight">
+    <div class="wrap stats">
+      <div class="stat"><span class="stat__num" data-count>48</span><div class="stat__label">Active members</div></div>
+      <div class="stat"><span class="stat__num" data-count>12</span><div class="stat__label">Projects shipped</div></div>
+      <div class="stat"><span class="stat__num" data-count>26</span><div class="stat__label">Workshops held</div></div>
+      <div class="stat"><span class="stat__num">2024</span><div class="stat__label">Founded</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT SNIPPET -->
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What this club is</h2>
+      </div>
+      <p>
+        We meet every week to learn one thing and build with it straight away.
+        Half the room has never opened a code editor; the other half is deploying
+        side projects. Both get something out of the same session, because
+        everything we teach ends in something that runs.
+      </p>
+      <p><a href="about.html">Read the full story</a></p>
+    </div>
+  </section>
+
+  <!-- WHY JOIN — four cards, expanded in full on the About and Join pages. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What you get out of it</h2>
+        <p>Four things members say made joining worth the Wednesday evening.</p>
+      </div>
+      <div class="grid grid--4">
+        <div class="card">
+          <h3>Real projects</h3>
+          <p>You join a team in week two and have something deployed by the end of term.</p>
+        </div>
+        <div class="card">
+          <h3>Workshops</h3>
+          <p>Weekly sessions taught by members, from first HTML tag to deployment.</p>
+        </div>
+        <div class="card">
+          <h3>A portfolio</h3>
+          <p>Everything you build here is yours, public, and linkable on a CV.</p>
+        </div>
+        <div class="card">
+          <h3>People who answer</h3>
+          <p>A Discord where a stuck question gets a reply, usually within the hour.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT EVENT — rendered by main.js from data/events.js. -->
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Next up</h2>
+        <p>Open to everyone, including people who have never been before.</p>
+      </div>
+      <div data-events="next"></div>
+      <p><a href="events.html">See the full calendar</a></p>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS — rendered by main.js from data/projects.js. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Things members built</h2>
+        <p>Three of them started the term unable to centre a div.</p>
+      </div>
+      <div class="grid grid--3" data-projects="featured"></div>
+      <p style="margin-top:var(--s-3)"><a href="projects.html">All projects</a></p>
+    </div>
+  </section>
+
+  <!-- TECH STRIP -->
+  <section class="section section--card">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we cover</h2>
+        <p>Roughly in this order, over a semester.</p>
+      </div>
+      <ul class="tech">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Git &amp; GitHub</li>
+        <li>React</li><li>Node</li><li>Python</li><li>Deployment</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MEMBER SPOTLIGHT — swap in a real quote from a member. -->
+  <section class="section">
+    <div class="wrap">
+      <blockquote class="quote">
+        I came to one workshop to see what it was about and ended up leading the
+        one after it. Nobody here cares how little you knew in September.
+        <cite>Member, second year</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CTA BAND — reused on every page. -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Wednesdays, 5pm, Room B12</h2>
+          <p>Turn up once and see. No signup needed for your first session.</p>
+        </div>
+        <a class="btn btn--join" href="join.html">Join the club</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER — identical on all seven pages. -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__cols">
+      <div>
+        <h4>Web Dev Club</h4>
+        <p style="color:#c6cbe8;font-size:var(--step--1)">
+          A student-run club for building things on the web, open to every
+          major and every skill level.
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li>hello@webdevclub.org</li>
+          <li>Room B12 · Wednesdays 5pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Web Dev Club</div>
+  </div>
+</footer>
+
+<script src="data/events.js"></script>
+<script src="data/projects.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+/* ==========================================================================
+   Web Dev Club — shared stylesheet
+   Loaded by all seven pages. Organised as:
+     1. Tokens        2. Base        3. Layout helpers
+     4. Navbar        5. Footer      6. Buttons
+     7. Cards & grids 8. Hero        9. Page sections
+    10. Utilities    11. Responsive
+   ========================================================================== */
+
+/* 1. TOKENS ---------------------------------------------------------------
+   Every colour, size and spacing value in the site comes from here.
+   Change a value once and it updates on all seven pages.                    */
+:root {
+  /* colour */
+  --ink:        #16181d;   /* body text                     */
+  --indigo:     #21255c;   /* headings, nav, primary button */
+  --indigo-alt: #343a86;   /* hover state for indigo        */
+  --marigold:   #ffc233;   /* accent: rules, highlights     */
+  --slate:      #5b6070;   /* secondary text                */
+  --paper:      #f1f2ee;   /* page background               */
+  --card:       #ffffff;   /* raised surfaces               */
+  --line:       #d8dad2;   /* hairline borders              */
+
+  /* type scale — 1.25 ratio off a 17px base */
+  --step--1: 0.8rem;
+  --step-0:  1.0625rem;
+  --step-1:  1.33rem;
+  --step-2:  1.66rem;
+  --step-3:  2.07rem;
+  --step-4:  2.6rem;
+  --step-5:  3.4rem;
+
+  /* spacing */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: 4rem;
+  --s-6: 6rem;
+
+  --radius: 6px;
+  --measure: 66ch;          /* max comfortable line length */
+  --wrap: 1120px;           /* max content width           */
+}
+
+/* 2. BASE ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  color: var(--indigo);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--s-2);
+}
+
+h1 { font-size: var(--step-5); font-weight: 800; }
+h2 { font-size: var(--step-4); font-weight: 700; }
+h3 { font-size: var(--step-2); font-weight: 700; }
+h4 { font-size: var(--step-1); font-weight: 600; }
+
+p  { margin: 0 0 var(--s-2); max-width: var(--measure); }
+
+a  { color: var(--indigo); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--indigo-alt); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+ul, ol { padding-left: 1.2em; }
+
+/* Keyboard users must always be able to see where they are. */
+:focus-visible {
+  outline: 3px solid var(--indigo);
+  outline-offset: 3px;
+}
+
+/* Skip link — first thing a screen reader or tab press reaches. */
+.skip-link {
+  position: absolute; left: -9999px;
+  background: var(--indigo); color: #fff;
+  padding: var(--s-1) var(--s-2); z-index: 100;
+}
+.skip-link:focus { left: var(--s-2); top: var(--s-2); }
+
+/* 3. LAYOUT HELPERS ------------------------------------------------------ */
+.wrap {
+  width: min(100% - 2.5rem, var(--wrap));
+  margin-inline: auto;
+}
+
+/* Vertical rhythm between major page sections. Applied to <section>, so
+   don't also add margins on the sections themselves — they will fight. */
+.section { padding-block: var(--s-6); }
+.section--tight { padding-block: var(--s-5); }
+.section--paper { background: var(--paper); }
+.section--card  { background: var(--card); }
+
+/* Section heading with a marigold rule that grows with the text above it. */
+.section-head { margin-bottom: var(--s-4); }
+.section-head h2 { margin-bottom: var(--s-1); }
+.section-head p { color: var(--slate); margin: 0; }
+.section-head::after {
+  content: "";
+  display: block;
+  width: 3.5rem; height: 4px;
+  background: var(--marigold);
+  margin-top: var(--s-2);
+}
+
+/* 4. NAVBAR -------------------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.nav__inner {
+  display: flex; align-items: center; gap: var(--s-3);
+  min-height: 68px;
+}
+.nav__logo {
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-weight: 800; font-size: var(--step-1);
+  color: var(--indigo); text-decoration: none;
+  margin-right: auto;
+}
+.nav__logo span { color: var(--marigold); }
+
+.nav__links {
+  display: flex; align-items: center; gap: var(--s-3);
+  list-style: none; margin: 0; padding: 0;
+}
+.nav__links a {
+  color: var(--ink); text-decoration: none;
+  font-size: var(--step--1); font-weight: 500;
+  padding-block: 4px;
+  border-bottom: 2px solid transparent;
+}
+.nav__links a:hover { border-bottom-color: var(--line); }
+
+/* Active page marker — add class="is-current" on the matching link. */
+.nav__links a.is-current {
+  color: var(--indigo);
+  border-bottom-color: var(--marigold);
+}
+
+.nav__toggle {
+  display: none;
+  background: none; border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 6px 10px; font-size: var(--step-0); cursor: pointer;
+}
+
+/* 5. FOOTER -------------------------------------------------------------- */
+.footer {
+  background: var(--indigo);
+  color: #dcdff0;
+  padding-block: var(--s-5) var(--s-3);
+  margin-top: var(--s-6);
+}
+.footer a { color: #fff; }
+.footer h4 { color: #fff; margin-bottom: var(--s-1); }
+.footer__cols {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--s-4);
+}
+.footer ul { list-style: none; padding: 0; margin: 0; }
+.footer li { margin-bottom: 6px; font-size: var(--step--1); }
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,.18);
+  margin-top: var(--s-4); padding-top: var(--s-2);
+  font-size: var(--step--1); color: #aeb3d4;
+}
+
+/* 6. BUTTONS ------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  font: inherit; font-weight: 600;
+  padding: 0.7em 1.3em;
+  border-radius: var(--radius);
+  border: 2px solid var(--indigo);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .12s ease, background-color .12s ease;
+}
+.btn--primary { background: var(--indigo); color: #fff; }
+.btn--primary:hover { background: var(--indigo-alt); color: #fff; }
+.btn--ghost { background: transparent; color: var(--indigo); }
+.btn--ghost:hover { background: rgba(33,37,92,.07); }
+
+/* The single loud element on the page: the join button carries a hard
+   offset shadow so it reads as the one thing to press. */
+.btn--join {
+  background: var(--marigold);
+  border-color: var(--indigo);
+  color: var(--indigo);
+  box-shadow: 3px 3px 0 var(--indigo);
+}
+.btn--join:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--indigo); }
+.btn--join:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--indigo); }
+
+/* 7. CARDS & GRIDS ------------------------------------------------------- */
+.grid { display: grid; gap: var(--s-3); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-3);
+}
+.card h3 { font-size: var(--step-1); }
+.card p  { color: var(--slate); font-size: var(--step--1); margin-bottom: 0; }
+
+/* Project card — image on top, tags at the bottom. */
+.project-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.project-card__thumb {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, #e7e9f5, #d5d9ee);
+  display: grid; place-items: center;
+  color: var(--indigo); font-weight: 700;
+  border-bottom: 1px solid var(--line);
+}
+.project-card__body { padding: var(--s-3); flex: 1; display: flex; flex-direction: column; }
+.project-card__links { margin-top: auto; padding-top: var(--s-2); display: flex; gap: var(--s-2); font-size: var(--step--1); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: var(--s-2) 0 0; padding: 0; list-style: none; }
+.tag {
+  font-size: 0.72rem; font-weight: 600;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 9px;
+  color: var(--slate);
+}
+.tag--status { background: var(--marigold); border-color: var(--marigold); color: var(--indigo); }
+
+/* Event row — date block on the left, detail on the right. */
+.event {
+  display: grid;
+  grid-template-columns: 78px 1fr auto;
+  gap: var(--s-3);
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-2) var(--s-3);
+  margin-bottom: var(--s-2);
+}
+.event__date {
+  text-align: center;
+  border-right: 1px solid var(--line);
+  padding-right: var(--s-2);
+  line-height: 1.1;
+}
+.event__day   { font-size: var(--step-2); font-weight: 800; color: var(--indigo); display: block; }
+.event__month { font-size: var(--step--1); color: var(--slate); }
+.event__title { margin: 0; font-size: var(--step-1); }
+.event__meta  { margin: 2px 0 0; font-size: var(--step--1); color: var(--slate); }
+
+/* 8. HERO ----------------------------------------------------------------
+   The hero is the club's own subject matter made literal: the source on
+   the left, the rendered result on the right. It is the one deliberately
+   loud moment on the site — everything after it stays quiet.              */
+.hero { padding-block: var(--s-6) var(--s-5); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  align-items: center;
+}
+.hero h1 { margin-bottom: var(--s-2); }
+.hero__lede { font-size: var(--step-1); color: var(--slate); }
+.hero__actions { display: flex; gap: var(--s-2); flex-wrap: wrap; margin-top: var(--s-3); }
+
+.code-pane {
+  background: #1b1e3d;
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  box-shadow: 8px 8px 0 rgba(33,37,92,.14);
+}
+.code-pane__bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 12px;
+  background: #151833;
+  color: #8f97c9;
+  font-size: 0.72rem;
+}
+.code-pane__dot { width: 9px; height: 9px; border-radius: 50%; background: #3c4276; }
+.code-pane__dot:first-child { background: var(--marigold); }
+.code-pane pre { margin: 0; padding: var(--s-3); color: #cfd4f2; overflow-x: auto; }
+.code-pane .t  { color: #7fd1c3; }  /* tag       */
+.code-pane .a  { color: var(--marigold); }  /* attribute */
+.code-pane .s  { color: #f5a9c0; }  /* string    */
+
+/* 9. PAGE SECTIONS ------------------------------------------------------- */
+.page-head { padding-block: var(--s-5) var(--s-4); border-bottom: 1px solid var(--line); }
+.page-head h1 { font-size: var(--step-4); }
+.page-head p  { color: var(--slate); font-size: var(--step-1); margin: 0; }
+
+/* Stats bar */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-3); }
+.stat__num {
+  font-family: "Bricolage Grotesque", Inter, sans-serif;
+  font-size: var(--step-4); font-weight: 800; color: var(--indigo);
+  line-height: 1;
+}
+.stat__label { font-size: var(--step--1); color: var(--slate); }
+
+/* Quote */
+.quote {
+  border-left: 4px solid var(--marigold);
+  padding-left: var(--s-3);
+  font-size: var(--step-1);
+  color: var(--ink);
+}
+.quote cite { display: block; font-size: var(--step--1); font-style: normal; color: var(--slate); margin-top: var(--s-1); }
+
+/* Full-width call to action band */
+.cta-band {
+  background: var(--indigo);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: var(--s-4);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-3); flex-wrap: wrap;
+}
+.cta-band h2 { color: #fff; margin: 0; font-size: var(--step-3); }
+.cta-band p { color: #c6cbe8; margin: 6px 0 0; }
+
+/* Tech strip */
+.tech { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; padding: 0; margin: 0; }
+.tech li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-1) var(--s-2);
+  font-weight: 600; font-size: var(--step--1);
+}
+
+/* 10. UTILITIES ---------------------------------------------------------- */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.loading { color: var(--slate); font-size: var(--step--1); }
+
+/* 11. RESPONSIVE --------------------------------------------------------- */
+@media (max-width: 900px) {
+  :root { --step-5: 2.6rem; --step-4: 2.1rem; }
+  .hero__grid { grid-template-columns: 1fr; }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .footer__cols { grid-template-columns: 1fr 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+
+  /* Nav collapses to a toggle below 900px. */
+  .nav__toggle { display: block; }
+  .nav__links {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 68px;
+    flex-direction: column; align-items: flex-start;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: var(--s-2) 1.25rem var(--s-3);
+  }
+  .nav__links.is-open { display: flex; }
+  .nav__links li { width: 100%; padding-block: 6px; }
+}
+
+@media (max-width: 600px) {
+  .grid--4, .grid--3, .grid--2 { grid-template-columns: 1fr; }
+  .footer__cols { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 60px 1fr; }
+  .event__actions { grid-column: 1 / -1; }
+  .section { padding-block: var(--s-5); }
+}
+
+/* Anyone who has asked their system to reduce motion gets none of it. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ==========================================================================
+   12. INTERACTION — filters, forms, and the one page-load reveal
+   Added after the base system. Everything here degrades to a usable
+   static page if JavaScript fails or motion is switched off.
+   ========================================================================== */
+
+/* --- Filter bar (Projects page) ----------------------------------------- */
+.filters {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1);
+  margin-bottom: var(--s-3);
+}
+.filters__label {
+  font-size: var(--step--1); color: var(--slate);
+  margin-right: var(--s-1);
+}
+.filter {
+  font: inherit; font-size: var(--step--1); font-weight: 600;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 14px;
+  color: var(--slate);
+  cursor: pointer;
+}
+.filter:hover { border-color: var(--indigo); color: var(--indigo); }
+.filter[aria-pressed="true"] {
+  background: var(--indigo); border-color: var(--indigo); color: #fff;
+}
+.filter-count { font-size: var(--step--1); color: var(--slate); margin-left: auto; }
+
+/* Cards settle into place when a filter changes — motion that explains
+   what just happened, not decoration. */
+.project-card { animation: settle .28s ease both; }
+@keyframes settle {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --- Form --------------------------------------------------------------- */
+.form { max-width: 34rem; }
+.field { margin-bottom: var(--s-3); }
+.field label {
+  display: block; font-weight: 600; font-size: var(--step--1);
+  margin-bottom: 6px;
+}
+.field input, .field select, .field textarea {
+  font: inherit; width: 100%;
+  padding: 0.6em 0.75em;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--indigo);
+}
+.field textarea { min-height: 5.5rem; resize: vertical; }
+.field__hint { font-size: var(--step--1); color: var(--slate); margin: 4px 0 0; }
+
+/* Errors name what went wrong and how to fix it. */
+.field--invalid input, .field--invalid select { border-color: #b3261e; }
+.field__error {
+  display: none;
+  font-size: var(--step--1); color: #b3261e; margin: 5px 0 0;
+}
+.field--invalid .field__error { display: block; }
+
+.form__status { margin-top: var(--s-2); font-size: var(--step--1); color: #b3261e; }
+
+/* Success panel replaces the form once it validates. */
+.form-success {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--marigold);
+  border-radius: var(--radius);
+  padding: var(--s-3);
+  max-width: 34rem;
+  animation: settle .3s ease both;
+}
+.form-success h3 { margin-bottom: var(--s-1); }
+.form-success ol { margin: var(--s-2) 0 0; color: var(--slate); font-size: var(--step--1); }
+
+/* --- Hero reveal --------------------------------------------------------
+   One orchestrated sequence, once, on the home page only. Nothing else on
+   the site animates on scroll. */
+.js .reveal { opacity: 0; transform: translateY(10px); }
+.is-ready .reveal {
+  animation: reveal .5s cubic-bezier(.2,.7,.3,1) both;
+}
+.is-ready .reveal:nth-child(1) { animation-delay: .05s; }
+.is-ready .reveal:nth-child(2) { animation-delay: .15s; }
+.is-ready .reveal:nth-child(3) { animation-delay: .25s; }
+@keyframes reveal { to { opacity: 1; transform: none; } }
+
+/* The code pane types its last line in once, drawing the eye to the
+   sentence that explains the club. */
+.type-line { border-right: 2px solid var(--marigold); }
+.is-ready .type-line { animation: caret 1s step-end 6; }
+@keyframes caret { 50% { border-color: transparent; } }
+
+/* Counters animate from zero, so the numbers read as a result, not decor. */
+.stat__num { font-variant-numeric: tabular-nums; }
+
+/* Without the .js class (set by a tiny inline script) nothing is hidden,
+   so a page with JavaScript disabled still shows all its content. */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .is-ready .reveal, .project-card, .form-success {
+    opacity: 1 !important; transform: none !important; animation: none !important;
+  }
+}
