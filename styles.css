@@ -510,3 +510,12 @@ ul, ol { padding-left: 1.2em; }
     opacity: 1 !important; transform: none !important; animation: none !important;
   }
 }
+/* Make the officer cards wider */
+.section--card .grid {
+   grid-template-columns: repeat(2,1fr);
+   gap: 24px;
+}
+.section--card .card {
+  padding: 22px;
+  min-height: 180px;
+}
